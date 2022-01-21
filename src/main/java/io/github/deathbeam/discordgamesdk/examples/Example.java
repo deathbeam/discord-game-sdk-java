@@ -13,10 +13,13 @@ public class Example
 {
 	public static void main(String[] args)
 	{
+		// Put your client ID here
+		long CLIENT_ID = 0L;
+
 		DiscordGameSDK discord = DiscordGameSDK.INSTANCE;
 
 		DiscordCreateParams params = new DiscordCreateParams();
-		params.client_id = 437301794146877442L;
+		params.client_id = CLIENT_ID;
 		params.application_version = DISCORD_APPLICATION_MANAGER_VERSION;
 		params.user_version = DISCORD_USER_MANAGER_VERSION;
 		params.image_version = DISCORD_IMAGE_MANAGER_VERSION;
