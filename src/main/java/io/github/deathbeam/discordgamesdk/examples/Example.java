@@ -8,10 +8,17 @@ import static io.github.deathbeam.discordgamesdk.DiscordGameSDK.*;
 import io.github.deathbeam.discordgamesdk.IDiscordActivityManager;
 import io.github.deathbeam.discordgamesdk.IDiscordCore;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 public class Example
 {
-	public static void main(String[] args)
+	static void fillStr(byte[] dst, String val) {
+		Arrays.fill(dst, (byte)0);
+		byte[] valArr = val.getBytes(StandardCharsets.UTF_8);
+		System.arraycopy(valArr, 0, dst, 0, valArr.length);
+	}
+
+	public static void main(String[] args) throws InterruptedException
 	{
 		// Put your client ID here
 		long CLIENT_ID = 0L;
@@ -38,13 +45,22 @@ public class Example
 
 		int result = discord.DiscordCreate(DiscordGameSDK.DISCORD_VERSION, params, coreReferences);
 
-		IDiscordCore core = coreReferences[0];
+		final IDiscordCore core = coreReferences[0];
 		System.out.println("Discord create output is: " + result + " and pointer: " + core.getPointer());
+
+		core.set_log_hook.apply(core, EDiscordLogLevel.DiscordLogLevel_Debug, null, new IDiscordCore.set_log_hook_callback_hook_callback()
+		{
+			@Override
+			public void apply(Pointer hook_data, int level, Pointer message)
+			{
+				System.out.printf("LEVEL%s: %s%n", level, message.getString(0));
+			}
+		});
 
 		IDiscordActivityManager activityManager = core.get_activity_manager.apply(core);
 		DiscordActivity activity = new DiscordActivity();
-		activity.state = "In Play Mode".getBytes(StandardCharsets.UTF_8);
-		activity.details = "Playing the trumpet".getBytes(StandardCharsets.UTF_8);
+		fillStr(activity.state, "In Play Mode");
+		fillStr(activity.details, "Playing the trumpet");
 
 		activityManager.update_activity.apply(activityManager, activity, null, new IDiscordActivityManager.update_activity_callback_callback_callback()
 		{
@@ -55,9 +71,19 @@ public class Example
 			}
 		});
 
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				System.out.println("Shutting down Discord core " + core.getPointer());
+				core.destroy.apply(core);
+			}
+		}));
+
 		while (true) {
+			Thread.sleep(200);
 			core.run_callbacks.apply(core);
 		}
-
 	}
 }
