@@ -12,4 +12,11 @@ public class DiscordActivityManagerExtensions
 		activityManager.update_activity.apply(activityManager, activity, null, (callback_data, result) -> future.complete(result));
 		return future;
 	}
+
+	public static CompletableFuture<Integer> clearActivity(final IDiscordActivityManager activityManager)
+	{
+		final CompletableFuture<Integer> future = new CompletableFuture<>();
+		activityManager.clear_activity.apply(activityManager, null, (callback_data, result) -> future.complete(result));
+		return future;
+	}
 }
