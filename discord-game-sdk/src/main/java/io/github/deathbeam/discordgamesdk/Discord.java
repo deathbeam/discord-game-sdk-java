@@ -1,13 +1,8 @@
 package io.github.deathbeam.discordgamesdk;
 
-import com.sun.jna.Pointer;
-import io.github.deathbeam.discordgamesdk.jna.DiscordActivity;
 import io.github.deathbeam.discordgamesdk.jna.DiscordCreateParams;
-import io.github.deathbeam.discordgamesdk.jna.DiscordEntitlement;
-import io.github.deathbeam.discordgamesdk.jna.DiscordRelationship;
-import io.github.deathbeam.discordgamesdk.jna.DiscordUser;
-import io.github.deathbeam.discordgamesdk.jna.DiscordUserAchievement;
 import io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK;
+import static io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK.*;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordAchievementEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordActivityEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordCore;
@@ -18,10 +13,8 @@ import io.github.deathbeam.discordgamesdk.jna.IDiscordRelationshipEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordStoreEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordUserEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordVoiceEvents;
-import static io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK.*;
 import static io.github.deathbeam.discordgamesdk.utils.DiscordUtils.toBoolean;
 import java.util.concurrent.ExecutorService;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -46,206 +39,52 @@ public class Discord
 		params.achievement_version = DISCORD_ACHIEVEMENT_MANAGER_VERSION;
 
 		IDiscordAchievementEvents.ByReference achievementEvents = new IDiscordAchievementEvents.ByReference();
-		achievementEvents.on_user_achievement_update = new IDiscordAchievementEvents.on_user_achievement_update_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, DiscordUserAchievement user_achievement)
-			{
-				events.onUserAchievementUpdate(user_achievement);
-			}
-		};
+		achievementEvents.on_user_achievement_update = (event_data, user_achievement) -> events.onUserAchievementUpdate(user_achievement);
 		params.achievement_events = achievementEvents;
 
 		IDiscordActivityEvents.ByReference activityEvents = new IDiscordActivityEvents.ByReference();
-		activityEvents.on_activity_join = new IDiscordActivityEvents.on_activity_join_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, Pointer secret)
-			{
-				events.onActivityJoin(secret.getString(0));
-			}
-		};
-		activityEvents.on_activity_spectate = new IDiscordActivityEvents.on_activity_spectate_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, Pointer secret)
-			{
-				events.onActivitySpectate(secret.getString(0));
-			}
-		};
-		activityEvents.on_activity_join_request = new IDiscordActivityEvents.on_activity_join_request_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, DiscordUser user)
-			{
-				events.onActivityJoinRequest(user);
-			}
-		};
-		activityEvents.on_activity_invite = new IDiscordActivityEvents.on_activity_invite_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, int type, DiscordUser user, DiscordActivity activity)
-			{
-				events.onActivityInvite(type, user, activity);
-			}
-		};
+		activityEvents.on_activity_join = (event_data, secret) -> events.onActivityJoin(secret.getString(0));
+		activityEvents.on_activity_spectate = (event_data, secret) -> events.onActivitySpectate(secret.getString(0));
+		activityEvents.on_activity_join_request = (event_data, user) -> events.onActivityJoinRequest(user);
+		activityEvents.on_activity_invite = (event_data, type, user, activity) -> events.onActivityInvite(type, user, activity);
 		params.activity_events = activityEvents;
 
 		IDiscordLobbyEvents.ByReference lobbyEvents = new IDiscordLobbyEvents.ByReference();
-		lobbyEvents.on_lobby_update = new IDiscordLobbyEvents.on_lobby_update_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long lobby_id)
-			{
-				events.onLobbyUpdate(lobby_id);
-			}
-		};
-		lobbyEvents.on_lobby_delete = new IDiscordLobbyEvents.on_lobby_delete_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long lobby_id, int reason)
-			{
-				events.onLobbyDelete(lobby_id, reason);
-			}
-		};
-		lobbyEvents.on_member_connect = new IDiscordLobbyEvents.on_member_connect_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long lobby_id, long user_id)
-			{
-				events.onLobbyMemberConnect(lobby_id, user_id);
-			}
-		};
-		lobbyEvents.on_member_update = new IDiscordLobbyEvents.on_member_update_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long lobby_id, long user_id)
-			{
-				events.onLobbyMemberUpdate(lobby_id, user_id);
-			}
-		};
-		lobbyEvents.on_member_disconnect = new IDiscordLobbyEvents.on_member_disconnect_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long lobby_id, long user_id)
-			{
-				events.onLobbyMemberDisconnect(lobby_id, user_id);
-			}
-		};
-		lobbyEvents.on_lobby_message = new IDiscordLobbyEvents.on_lobby_message_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long lobby_id, long user_id, Pointer data, int data_length)
-			{
-				events.onLobbyMessage(lobby_id, user_id, data.getString(0));
-			}
-		};
-		lobbyEvents.on_speaking = new IDiscordLobbyEvents.on_speaking_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long lobby_id, long user_id, byte speaking)
-			{
-				events.onLobbySpeaking(lobby_id, user_id, toBoolean(speaking));
-			}
-		};
-		lobbyEvents.on_network_message = new IDiscordLobbyEvents.on_network_message_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long lobby_id, long user_id, byte channel_id, Pointer data, int data_length)
-			{
-				events.onLobbyNetworkMessage(lobby_id, user_id, channel_id, data.getString(0));
-			}
-		};
+		lobbyEvents.on_lobby_update = (event_data, lobby_id) -> events.onLobbyUpdate(lobby_id);
+		lobbyEvents.on_lobby_delete = (event_data, lobby_id, reason) -> events.onLobbyDelete(lobby_id, reason);
+		lobbyEvents.on_member_connect = (event_data, lobby_id, user_id) -> events.onLobbyMemberConnect(lobby_id, user_id);
+		lobbyEvents.on_member_update = (event_data, lobby_id, user_id) -> events.onLobbyMemberUpdate(lobby_id, user_id);
+		lobbyEvents.on_member_disconnect = (event_data, lobby_id, user_id) -> events.onLobbyMemberDisconnect(lobby_id, user_id);
+		lobbyEvents.on_lobby_message = (event_data, lobby_id, user_id, data, data_length) -> events.onLobbyMessage(lobby_id, user_id, data.getString(0));
+		lobbyEvents.on_speaking = (event_data, lobby_id, user_id, speaking) -> events.onLobbySpeaking(lobby_id, user_id, toBoolean(speaking));
+		lobbyEvents.on_network_message = (event_data, lobby_id, user_id, channel_id, data, data_length) -> events.onLobbyNetworkMessage(lobby_id, user_id, channel_id, data.getString(0));
 		params.lobby_events = lobbyEvents;
 
 		IDiscordNetworkEvents.ByReference networkEvents = new IDiscordNetworkEvents.ByReference();
-		networkEvents.on_message = new IDiscordNetworkEvents.on_message_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, long peer_id, byte channel_id, Pointer data, int data_length)
-			{
-				events.onNetworkMessage(peer_id, channel_id, data.getString(0));
-			}
-		};
-		networkEvents.on_route_update = new IDiscordNetworkEvents.on_route_update_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, Pointer route_data)
-			{
-				events.onNetworkRouteUpdate(route_data.getString(0));
-			}
-		};
+		networkEvents.on_message = (event_data, peer_id, channel_id, data, data_length) -> events.onNetworkMessage(peer_id, channel_id, data.getString(0));
+		networkEvents.on_route_update = (event_data, route_data) -> events.onNetworkRouteUpdate(route_data.getString(0));
 		params.network_events = networkEvents;
 
 		IDiscordOverlayEvents.ByReference overlayEvents = new IDiscordOverlayEvents.ByReference();
-		overlayEvents.on_toggle = new IDiscordOverlayEvents.on_toggle_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, byte locked)
-			{
-				events.onOverlayToggle(toBoolean(locked));
-			}
-		};
+		overlayEvents.on_toggle = (event_data, locked) -> events.onOverlayToggle(toBoolean(locked));
 		params.overlay_events = overlayEvents;
 
 		IDiscordRelationshipEvents.ByReference relationshipEvents = new IDiscordRelationshipEvents.ByReference();
-		relationshipEvents.on_refresh = new IDiscordRelationshipEvents.on_refresh_callback()
-		{
-			@Override
-			public void apply(Pointer event_data)
-			{
-				events.onRelationshipRefresh();
-			}
-		};
-		relationshipEvents.on_relationship_update = new IDiscordRelationshipEvents.on_relationship_update_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, DiscordRelationship relationship)
-			{
-				events.onRelationshipUpdate(relationship);
-			}
-		};
+		relationshipEvents.on_refresh = event_data -> events.onRelationshipRefresh();
+		relationshipEvents.on_relationship_update = (event_data, relationship) -> events.onRelationshipUpdate(relationship);
 		params.relationship_events = relationshipEvents;
 
 		IDiscordStoreEvents.ByReference storeEvents = new IDiscordStoreEvents.ByReference();
-		storeEvents.on_entitlement_create = new IDiscordStoreEvents.on_entitlement_create_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, DiscordEntitlement entitlement)
-			{
-				events.onStoreEntitlementCreate(entitlement);
-			}
-		};
-		storeEvents.on_entitlement_delete = new IDiscordStoreEvents.on_entitlement_delete_callback()
-		{
-			@Override
-			public void apply(Pointer event_data, DiscordEntitlement entitlement)
-			{
-				events.onStoreEntitlementDelete(entitlement);
-			}
-		};
+		storeEvents.on_entitlement_create = (event_data, entitlement) -> events.onStoreEntitlementCreate(entitlement);
+		storeEvents.on_entitlement_delete = (event_data, entitlement) -> events.onStoreEntitlementDelete(entitlement);
 		params.store_events = storeEvents;
 
 		IDiscordUserEvents.ByReference userEvents = new IDiscordUserEvents.ByReference();
-		userEvents.on_current_user_update = new IDiscordUserEvents.on_current_user_update_callback()
-		{
-			@Override
-			public void apply(Pointer event_data)
-			{
-				events.onCurrentUserUpdate();
-			}
-		};
+		userEvents.on_current_user_update = event_data -> events.onCurrentUserUpdate();
 		params.user_events = userEvents;
 
 		IDiscordVoiceEvents.ByReference voiceEvents = new IDiscordVoiceEvents.ByReference();
-		voiceEvents.on_settings_update = new IDiscordVoiceEvents.on_settings_update_callback()
-		{
-			@Override
-			public void apply(Pointer event_data)
-			{
-				events.onVoiceSettingsUpdate();
-			}
-		};
+		voiceEvents.on_settings_update = event_data -> events.onVoiceSettingsUpdate();
 		params.voice_events = voiceEvents;
 
 		IDiscordCore.ByReference coreReference = new IDiscordCore.ByReference();
@@ -260,52 +99,36 @@ public class Discord
 		final IDiscordCore core = coreReferences[0];
 		log.debug("Created Discord core instance {}", core.getPointer());
 
-		core.set_log_hook.apply(core, EDiscordLogLevel.DiscordLogLevel_Debug, null, new IDiscordCore.set_log_hook_callback_hook_callback()
-		{
-			@Override
-			public void apply(Pointer hook_data, int level, Pointer message)
+		core.set_log_hook.apply(core, EDiscordLogLevel.DiscordLogLevel_Debug, null, (hook_data, level, message) -> {
+			final String messageStr = message.getString(0);
+			switch (level)
 			{
-				String messageStr = message.getString(0);
-				switch (level)
-				{
-					case EDiscordLogLevel.DiscordLogLevel_Debug:
-						log.debug(messageStr);
-						break;
-					case EDiscordLogLevel.DiscordLogLevel_Info:
-						log.info(messageStr);
-						break;
-					case EDiscordLogLevel.DiscordLogLevel_Warn:
-						log.warn(messageStr);
-						break;
-					case EDiscordLogLevel.DiscordLogLevel_Error:
-						log.error(messageStr);
-						break;
-				}
+				case EDiscordLogLevel.DiscordLogLevel_Debug:
+					log.debug(messageStr);
+					break;
+				case EDiscordLogLevel.DiscordLogLevel_Info:
+					log.info(messageStr);
+					break;
+				case EDiscordLogLevel.DiscordLogLevel_Warn:
+					log.warn(messageStr);
+					break;
+				case EDiscordLogLevel.DiscordLogLevel_Error:
+					log.error(messageStr);
+					break;
 			}
 		});
 
-		executorService.submit(new Runnable()
-		{
-			@SneakyThrows
-			@Override
-			public void run()
+		executorService.submit(() -> {
+			while (true)
 			{
-				while (true)
-				{
-					Thread.sleep(200);
-					core.run_callbacks.apply(core);
-				}
+				Thread.sleep(200);
+				core.run_callbacks.apply(core);
 			}
 		});
 
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				log.debug("Closing Discord core instance {}", core.getPointer());
-				core.destroy.apply(core);
-			}
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			log.debug("Closing Discord core instance {}", core.getPointer());
+			core.destroy.apply(core);
 		}));
 
 		return core;

@@ -1,20 +1,20 @@
 package io.github.deathbeam.discordgamesdk.examples;
 
-import com.sun.jna.Pointer;
+import io.github.deathbeam.discordgamesdk.Discord;
+import io.github.deathbeam.discordgamesdk.DiscordEvents;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordActivityExtensions;
+import io.github.deathbeam.discordgamesdk.extensions.DiscordActivityManagerExtensions;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordCoreExtensions;
 import io.github.deathbeam.discordgamesdk.jna.DiscordActivity;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordActivityManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordCore;
-import io.github.deathbeam.discordgamesdk.Discord;
-import io.github.deathbeam.discordgamesdk.DiscordEvents;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@ExtensionMethod({DiscordCoreExtensions.class, DiscordActivityExtensions.class})
+@ExtensionMethod({DiscordCoreExtensions.class, DiscordActivityExtensions.class, DiscordActivityManagerExtensions.class})
 public class Example
 {
 	public static void main(String[] args)
@@ -28,15 +28,7 @@ public class Example
 		final DiscordActivity activity = new DiscordActivity();
 		activity.setState("In Play Mode");
 		activity.setDetails("Playing the trumpet");
-
-		activityManager.update_activity.apply(activityManager, activity, null, new IDiscordActivityManager.update_activity_callback_callback_callback()
-		{
-			@Override
-			public void apply(Pointer callback_data, int result)
-			{
-				log.debug("update activity callback result is {}", result);
-			}
-		});
+		activityManager.updateActivity(activity).thenAccept(result -> log.debug("update activity callback result is {}", result));
 
 		while (!executorService.isShutdown())
 		{

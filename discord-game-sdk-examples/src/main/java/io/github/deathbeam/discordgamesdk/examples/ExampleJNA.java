@@ -1,6 +1,5 @@
 package io.github.deathbeam.discordgamesdk.examples;
 
-import com.sun.jna.Pointer;
 import io.github.deathbeam.discordgamesdk.jna.DiscordActivity;
 import io.github.deathbeam.discordgamesdk.jna.DiscordCreateParams;
 import io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK;
@@ -42,26 +41,15 @@ public class ExampleJNA
 		fillStr(activity.state, "In Play Mode");
 		fillStr(activity.details, "Playing the trumpet");
 
-		activityManager.update_activity.apply(activityManager, activity, null, new IDiscordActivityManager.update_activity_callback_callback_callback()
-		{
-			@Override
-			public void apply(Pointer callback_data, int result)
-			{
-				log.debug("update activity callback result is {}", result);
-			}
-		});
+		activityManager.update_activity.apply(activityManager, activity, null, (callback_data, result1) -> log.debug("update activity callback result is {}", result1));
 
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				log.debug("Shutting down Discord core {}", core.getPointer());
-				core.destroy.apply(core);
-			}
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			log.debug("Shutting down Discord core {}", core.getPointer());
+			core.destroy.apply(core);
 		}));
 
-		while (true) {
+		while (true)
+		{
 			Thread.sleep(200);
 			core.run_callbacks.apply(core);
 		}
