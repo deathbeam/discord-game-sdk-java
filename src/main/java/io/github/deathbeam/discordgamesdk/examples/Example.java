@@ -5,6 +5,7 @@ import io.github.deathbeam.discordgamesdk.DiscordActivity;
 import io.github.deathbeam.discordgamesdk.IDiscordActivityManager;
 import io.github.deathbeam.discordgamesdk.IDiscordCore;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordActivityExtensions;
+import io.github.deathbeam.discordgamesdk.extensions.DiscordCoreExtensions;
 import io.github.deathbeam.discordgamesdk.sugar.Discord;
 import io.github.deathbeam.discordgamesdk.sugar.DiscordEvents;
 import java.util.concurrent.ExecutorService;
@@ -13,7 +14,7 @@ import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@ExtensionMethod({DiscordActivityExtensions.class})
+@ExtensionMethod({DiscordCoreExtensions.class, DiscordActivityExtensions.class})
 public class Example
 {
 	public static void main(String[] args)
@@ -23,7 +24,7 @@ public class Example
 		final ExecutorService executorService = Executors.newCachedThreadPool();
 		final IDiscordCore core = Discord.create(CLIENT_ID, new DiscordEvents(), executorService);
 
-		final IDiscordActivityManager activityManager = core.get_activity_manager.apply(core);
+		final IDiscordActivityManager activityManager = core.getActivityManager();
 		final DiscordActivity activity = new DiscordActivity();
 		activity.setState("In Play Mode");
 		activity.setDetails("Playing the trumpet");
