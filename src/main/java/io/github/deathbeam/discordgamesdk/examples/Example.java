@@ -38,6 +38,8 @@ public class Example
 			}
 		});
 
-		while (!executorService.isShutdown()) {};
+		while (!executorService.isShutdown())
+		{
+		}
 	}
 }

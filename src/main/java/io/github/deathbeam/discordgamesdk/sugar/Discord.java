@@ -27,7 +27,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Discord
 {
-	public static IDiscordCore create(final long clientId, final DiscordEvents events, final ExecutorService executorService) {
+	public static IDiscordCore create(final long clientId, final DiscordEvents events, final ExecutorService executorService)
+	{
 		final DiscordGameSDK discord = INSTANCE;
 		DiscordCreateParams params = new DiscordCreateParams();
 		params.client_id = clientId;
@@ -251,7 +252,8 @@ public class Discord
 		IDiscordCore.ByReference[] coreReferences = (IDiscordCore.ByReference[]) coreReference.toArray(1);
 		int result = discord.DiscordCreate(DiscordGameSDK.DISCORD_VERSION, params, coreReferences);
 
-		if (result != EDiscordResult.DiscordResult_Ok) {
+		if (result != EDiscordResult.DiscordResult_Ok)
+		{
 			throw new RuntimeException(String.format("Discord result is not OK(0): %s", result));
 		}
 
@@ -262,7 +264,8 @@ public class Discord
 			public void apply(Pointer hook_data, int level, Pointer message)
 			{
 				String messageStr = message.getString(0);
-				switch (level) {
+				switch (level)
+				{
 					case EDiscordLogLevel.DiscordLogLevel_Debug:
 						log.debug(messageStr);
 						break;
@@ -285,7 +288,8 @@ public class Discord
 			@Override
 			public void run()
 			{
-				while (true) {
+				while (true)
+				{
 					Thread.sleep(200);
 					core.run_callbacks.apply(core);
 				}

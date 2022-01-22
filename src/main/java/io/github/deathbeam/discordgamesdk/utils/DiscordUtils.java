@@ -9,7 +9,7 @@ public class DiscordUtils
 {
 	public static void fillStr(byte[] dst, String val)
 	{
-		Arrays.fill(dst, (byte)0);
+		Arrays.fill(dst, (byte) 0);
 		final byte[] valArr = val.getBytes(StandardCharsets.UTF_8);
 		System.arraycopy(valArr, 0, dst, 0, valArr.length);
 	}
