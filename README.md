@@ -1,5 +1,7 @@
 # discord-game-sdk-java
 
+Java JNA wrapper for Discord Game SDK
+
 ## How to use
 
 [Example.java](src/main/java/io/github/deathbeam/discordgamesdk/examples/Example.java)
