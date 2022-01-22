@@ -19,7 +19,7 @@ public class DiscordActivitySecrets extends Structure {
 	public DiscordActivitySecrets() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("match", "join", "spectate");
 	}
 	/**

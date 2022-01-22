@@ -15,7 +15,7 @@ public class DiscordPartySize extends Structure {
 	public DiscordPartySize() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("current_size", "max_size");
 	}
 	public DiscordPartySize(int current_size, int max_size) {

@@ -20,7 +20,7 @@ public class DiscordInputMode extends Structure {
 	public DiscordInputMode() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("type", "shortcut");
 	}
 	/**

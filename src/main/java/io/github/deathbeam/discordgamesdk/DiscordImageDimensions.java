@@ -15,7 +15,7 @@ public class DiscordImageDimensions extends Structure {
 	public DiscordImageDimensions() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("width", "height");
 	}
 	public DiscordImageDimensions(int width, int height) {

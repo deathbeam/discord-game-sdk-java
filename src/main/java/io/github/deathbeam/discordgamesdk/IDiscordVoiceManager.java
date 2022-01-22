@@ -78,7 +78,7 @@ public class IDiscordVoiceManager extends Structure {
 	public IDiscordVoiceManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("get_input_mode", "set_input_mode", "is_self_mute", "set_self_mute", "is_self_deaf", "set_self_deaf", "is_local_mute", "set_local_mute", "get_local_volume", "set_local_volume");
 	}
 	public IDiscordVoiceManager(Pointer peer) {

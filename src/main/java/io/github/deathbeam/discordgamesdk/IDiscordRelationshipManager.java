@@ -15,7 +15,7 @@ public class IDiscordRelationshipManager extends Structure {
 	/** C type : filter_callback* */
 	public IDiscordRelationshipManager.filter_callback filter;
 	/** C type : count_callback* */
-	public io.github.deathbeam.discordgamesdk.IDiscordStorageManager.count_callback count;
+	public IDiscordStorageManager.count_callback count;
 	/** C type : get_callback* */
 	public IDiscordRelationshipManager.get_callback get;
 	/** C type : get_at_callback* */
@@ -43,7 +43,7 @@ public class IDiscordRelationshipManager extends Structure {
 	public IDiscordRelationshipManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("filter", "count", "get", "get_at");
 	}
 	/**
@@ -52,7 +52,7 @@ public class IDiscordRelationshipManager extends Structure {
 	 * @param get C type : get_callback*<br>
 	 * @param get_at C type : get_at_callback*
 	 */
-	public IDiscordRelationshipManager(IDiscordRelationshipManager.filter_callback filter, io.github.deathbeam.discordgamesdk.IDiscordStorageManager.count_callback count, IDiscordRelationshipManager.get_callback get, IDiscordRelationshipManager.get_at_callback get_at) {
+	public IDiscordRelationshipManager(IDiscordRelationshipManager.filter_callback filter, IDiscordStorageManager.count_callback count, IDiscordRelationshipManager.get_callback get, IDiscordRelationshipManager.get_at_callback get_at) {
 		super();
 		this.filter = filter;
 		this.count = count;

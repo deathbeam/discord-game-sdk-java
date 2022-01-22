@@ -20,7 +20,7 @@ public class DiscordImageHandle extends Structure {
 	public DiscordImageHandle() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("type", "id", "size");
 	}
 	/**

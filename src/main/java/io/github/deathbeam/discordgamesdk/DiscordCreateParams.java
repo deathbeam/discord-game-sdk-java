@@ -23,7 +23,7 @@ public class DiscordCreateParams extends Structure {
 	/** C type : DiscordVersion */
 	public int application_version;
 	/** C type : IDiscordUserEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordUserEvents.ByReference user_events;
+	public IDiscordUserEvents.ByReference user_events;
 	/** C type : DiscordVersion */
 	public int user_version;
 	/** C type : IDiscordImageEvents* */
@@ -31,23 +31,23 @@ public class DiscordCreateParams extends Structure {
 	/** C type : DiscordVersion */
 	public int image_version;
 	/** C type : IDiscordActivityEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordActivityEvents.ByReference activity_events;
+	public IDiscordActivityEvents.ByReference activity_events;
 	/** C type : DiscordVersion */
 	public int activity_version;
 	/** C type : IDiscordRelationshipEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordRelationshipEvents.ByReference relationship_events;
+	public IDiscordRelationshipEvents.ByReference relationship_events;
 	/** C type : DiscordVersion */
 	public int relationship_version;
 	/** C type : IDiscordLobbyEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordLobbyEvents.ByReference lobby_events;
+	public IDiscordLobbyEvents.ByReference lobby_events;
 	/** C type : DiscordVersion */
 	public int lobby_version;
 	/** C type : IDiscordNetworkEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordNetworkEvents.ByReference network_events;
+	public IDiscordNetworkEvents.ByReference network_events;
 	/** C type : DiscordVersion */
 	public int network_version;
 	/** C type : IDiscordOverlayEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordOverlayEvents.ByReference overlay_events;
+	public IDiscordOverlayEvents.ByReference overlay_events;
 	/** C type : DiscordVersion */
 	public int overlay_version;
 	/** C type : IDiscordStorageEvents* */
@@ -55,21 +55,21 @@ public class DiscordCreateParams extends Structure {
 	/** C type : DiscordVersion */
 	public int storage_version;
 	/** C type : IDiscordStoreEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordStoreEvents.ByReference store_events;
+	public IDiscordStoreEvents.ByReference store_events;
 	/** C type : DiscordVersion */
 	public int store_version;
 	/** C type : IDiscordVoiceEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordVoiceEvents.ByReference voice_events;
+	public IDiscordVoiceEvents.ByReference voice_events;
 	/** C type : DiscordVersion */
 	public int voice_version;
 	/** C type : IDiscordAchievementEvents* */
-	public io.github.deathbeam.discordgamesdk.IDiscordAchievementEvents.ByReference achievement_events;
+	public IDiscordAchievementEvents.ByReference achievement_events;
 	/** C type : DiscordVersion */
 	public int achievement_version;
 	public DiscordCreateParams() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("client_id", "flags", "events", "event_data", "application_events", "application_version", "user_events", "user_version", "image_events", "image_version", "activity_events", "activity_version", "relationship_events", "relationship_version", "lobby_events", "lobby_version", "network_events", "network_version", "overlay_events", "overlay_version", "storage_events", "storage_version", "store_events", "store_version", "voice_events", "voice_version", "achievement_events", "achievement_version");
 	}
 	public DiscordCreateParams(Pointer peer) {

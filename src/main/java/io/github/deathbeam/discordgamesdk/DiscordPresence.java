@@ -20,7 +20,7 @@ public class DiscordPresence extends Structure {
 	public DiscordPresence() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("status", "activity");
 	}
 	/**

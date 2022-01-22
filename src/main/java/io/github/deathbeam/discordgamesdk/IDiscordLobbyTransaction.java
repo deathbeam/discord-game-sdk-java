@@ -18,11 +18,11 @@ public class IDiscordLobbyTransaction extends Structure {
 	/** C type : set_capacity_callback* */
 	public IDiscordLobbyTransaction.set_capacity_callback set_capacity;
 	/** C type : set_metadata_callback* */
-	public io.github.deathbeam.discordgamesdk.IDiscordLobbyMemberTransaction.set_metadata_callback set_metadata;
+	public IDiscordLobbyMemberTransaction.set_metadata_callback set_metadata;
 	/** C type : delete_metadata_callback* */
-	public io.github.deathbeam.discordgamesdk.IDiscordLobbyMemberTransaction.delete_metadata_callback delete_metadata;
+	public IDiscordLobbyMemberTransaction.delete_metadata_callback delete_metadata;
 	/** C type : set_locked_callback* */
-	public io.github.deathbeam.discordgamesdk.IDiscordOverlayManager.set_locked_callback set_locked;
+	public IDiscordOverlayManager.set_locked_callback set_locked;
 	/** <i>native declaration : discord_game_sdk.h</i> */
 	public interface set_type_callback extends Callback {
 		int apply(IDiscordLobbyTransaction lobby_transaction, int type);
@@ -50,7 +50,7 @@ public class IDiscordLobbyTransaction extends Structure {
 	public IDiscordLobbyTransaction() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("set_type", "set_owner", "set_capacity", "set_metadata", "delete_metadata", "set_locked");
 	}
 	/**
@@ -61,7 +61,7 @@ public class IDiscordLobbyTransaction extends Structure {
 	 * @param delete_metadata C type : delete_metadata_callback*<br>
 	 * @param set_locked C type : set_locked_callback*
 	 */
-	public IDiscordLobbyTransaction(IDiscordLobbyTransaction.set_type_callback set_type, IDiscordLobbyTransaction.set_owner_callback set_owner, IDiscordLobbyTransaction.set_capacity_callback set_capacity, io.github.deathbeam.discordgamesdk.IDiscordLobbyMemberTransaction.set_metadata_callback set_metadata, io.github.deathbeam.discordgamesdk.IDiscordLobbyMemberTransaction.delete_metadata_callback delete_metadata, io.github.deathbeam.discordgamesdk.IDiscordOverlayManager.set_locked_callback set_locked) {
+	public IDiscordLobbyTransaction(IDiscordLobbyTransaction.set_type_callback set_type, IDiscordLobbyTransaction.set_owner_callback set_owner, IDiscordLobbyTransaction.set_capacity_callback set_capacity, IDiscordLobbyMemberTransaction.set_metadata_callback set_metadata, IDiscordLobbyMemberTransaction.delete_metadata_callback delete_metadata, IDiscordOverlayManager.set_locked_callback set_locked) {
 		super();
 		this.set_type = set_type;
 		this.set_owner = set_owner;

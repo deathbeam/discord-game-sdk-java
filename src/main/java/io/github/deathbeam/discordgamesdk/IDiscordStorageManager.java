@@ -93,7 +93,7 @@ public class IDiscordStorageManager extends Structure {
 	public IDiscordStorageManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("read", "read_async", "read_async_partial", "write", "write_async", "delete_", "exists", "count", "stat", "stat_at", "get_path");
 	}
 	public IDiscordStorageManager(Pointer peer) {

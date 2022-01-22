@@ -108,7 +108,7 @@ public class IDiscordCore extends Structure {
 	public IDiscordCore() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("destroy", "run_callbacks", "set_log_hook", "get_application_manager", "get_user_manager", "get_image_manager", "get_activity_manager", "get_relationship_manager", "get_lobby_manager", "get_network_manager", "get_overlay_manager", "get_storage_manager", "get_store_manager", "get_voice_manager", "get_achievement_manager");
 	}
 	public IDiscordCore(Pointer peer) {

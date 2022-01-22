@@ -19,7 +19,7 @@ public class DiscordOAuth2Token extends Structure {
 	public DiscordOAuth2Token() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("access_token", "scopes", "expires");
 	}
 	/**

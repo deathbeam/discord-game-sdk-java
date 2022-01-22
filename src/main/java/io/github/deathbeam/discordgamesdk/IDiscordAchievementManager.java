@@ -53,7 +53,7 @@ public class IDiscordAchievementManager extends Structure {
 	public IDiscordAchievementManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("set_user_achievement", "fetch_user_achievements", "count_user_achievements", "get_user_achievement", "get_user_achievement_at");
 	}
 	/**

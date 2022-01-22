@@ -20,7 +20,7 @@ public class DiscordUserAchievement extends Structure {
 	public DiscordUserAchievement() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("user_id", "achievement_id", "percent_complete", "unlocked_at");
 	}
 	/**

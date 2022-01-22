@@ -20,7 +20,7 @@ public class IDiscordAchievementEvents extends Structure {
 	public IDiscordAchievementEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_user_achievement_update");
 	}
 	/** @param on_user_achievement_update C type : on_user_achievement_update_callback* */

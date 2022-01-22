@@ -38,7 +38,7 @@ public class IDiscordActivityEvents extends Structure {
 	public IDiscordActivityEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_activity_join", "on_activity_spectate", "on_activity_join_request", "on_activity_invite");
 	}
 	/**

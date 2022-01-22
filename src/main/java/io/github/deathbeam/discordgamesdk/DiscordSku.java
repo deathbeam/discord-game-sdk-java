@@ -24,7 +24,7 @@ public class DiscordSku extends Structure {
 	public DiscordSku() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("id", "type", "name", "price");
 	}
 	/**

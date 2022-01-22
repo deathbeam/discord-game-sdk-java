@@ -43,7 +43,7 @@ public class IDiscordUserManager extends Structure {
 	public IDiscordUserManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("get_current_user", "get_user", "get_current_user_premium_type", "current_user_has_flag");
 	}
 	/**

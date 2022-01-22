@@ -19,24 +19,24 @@ public class IDiscordImageManager extends Structure {
 	public IDiscordImageManager.get_data_callback get_data;
 	/** <i>native declaration : discord_game_sdk.h:367</i> */
 	public interface fetch_callback_callback_callback extends Callback {
-		void apply(Pointer callback_data, int result, io.github.deathbeam.discordgamesdk.DiscordImageHandle.ByValue handle_result);
+		void apply(Pointer callback_data, int result, DiscordImageHandle.ByValue handle_result);
 	};
 	/** <i>native declaration : discord_game_sdk.h</i> */
 	public interface fetch_callback extends Callback {
-		void apply(IDiscordImageManager manager, io.github.deathbeam.discordgamesdk.DiscordImageHandle.ByValue handle, byte refresh, Pointer callback_data, IDiscordImageManager.fetch_callback_callback_callback callback);
+		void apply(IDiscordImageManager manager, DiscordImageHandle.ByValue handle, byte refresh, Pointer callback_data, IDiscordImageManager.fetch_callback_callback_callback callback);
 	};
 	/** <i>native declaration : discord_game_sdk.h</i> */
 	public interface get_dimensions_callback extends Callback {
-		int apply(IDiscordImageManager manager, io.github.deathbeam.discordgamesdk.DiscordImageHandle.ByValue handle, DiscordImageDimensions dimensions);
+		int apply(IDiscordImageManager manager, DiscordImageHandle.ByValue handle, DiscordImageDimensions dimensions);
 	};
 	/** <i>native declaration : discord_game_sdk.h</i> */
 	public interface get_data_callback extends Callback {
-		int apply(IDiscordImageManager manager, io.github.deathbeam.discordgamesdk.DiscordImageHandle.ByValue handle, Pointer data, int data_length);
+		int apply(IDiscordImageManager manager, DiscordImageHandle.ByValue handle, Pointer data, int data_length);
 	};
 	public IDiscordImageManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("fetch", "get_dimensions", "get_data");
 	}
 	/**

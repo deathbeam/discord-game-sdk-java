@@ -56,7 +56,7 @@ public class IDiscordApplicationManager extends Structure {
 	public IDiscordApplicationManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("validate_or_exit", "get_current_locale", "get_current_branch", "get_oauth2_token", "get_ticket");
 	}
 	/**

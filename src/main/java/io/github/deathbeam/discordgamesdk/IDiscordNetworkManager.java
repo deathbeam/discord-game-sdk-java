@@ -63,7 +63,7 @@ public class IDiscordNetworkManager extends Structure {
 	public IDiscordNetworkManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("get_peer_id", "flush", "open_peer", "update_peer", "close_peer", "open_channel", "close_channel", "send_message");
 	}
 	/**

@@ -259,7 +259,7 @@ public class IDiscordLobbyManager extends Structure {
 	public IDiscordLobbyManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("get_lobby_create_transaction", "get_lobby_update_transaction", "get_member_update_transaction", "create_lobby", "update_lobby", "delete_lobby", "connect_lobby", "connect_lobby_with_activity_secret", "disconnect_lobby", "get_lobby", "get_lobby_activity_secret", "get_lobby_metadata_value", "get_lobby_metadata_key", "lobby_metadata_count", "member_count", "get_member_user_id", "get_member_user", "get_member_metadata_value", "get_member_metadata_key", "member_metadata_count", "update_member", "send_lobby_message", "get_search_query", "search", "lobby_count", "get_lobby_id", "connect_voice", "disconnect_voice", "connect_network", "disconnect_network", "flush_network", "open_network_channel", "send_network_message");
 	}
 	public IDiscordLobbyManager(Pointer peer) {

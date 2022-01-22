@@ -20,7 +20,7 @@ public class IDiscordOverlayEvents extends Structure {
 	public IDiscordOverlayEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_toggle");
 	}
 	/** @param on_toggle C type : on_toggle_callback* */

@@ -22,7 +22,7 @@ public class DiscordUser extends Structure {
 	public DiscordUser() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("id", "username", "discriminator", "avatar", "bot");
 	}
 	/**

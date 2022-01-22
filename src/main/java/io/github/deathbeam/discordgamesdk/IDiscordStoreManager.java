@@ -87,7 +87,7 @@ public class IDiscordStoreManager extends Structure {
 	public IDiscordStoreManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("fetch_skus", "count_skus", "get_sku", "get_sku_at", "fetch_entitlements", "count_entitlements", "get_entitlement", "get_entitlement_at", "has_sku_entitlement", "start_purchase");
 	}
 	public IDiscordStoreManager(Pointer peer) {

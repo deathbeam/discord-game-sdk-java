@@ -26,7 +26,7 @@ public class IDiscordStoreEvents extends Structure {
 	public IDiscordStoreEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_entitlement_create", "on_entitlement_delete");
 	}
 	/**

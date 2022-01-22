@@ -62,7 +62,7 @@ public class IDiscordLobbyEvents extends Structure {
 	public IDiscordLobbyEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_lobby_update", "on_lobby_delete", "on_member_connect", "on_member_update", "on_member_disconnect", "on_lobby_message", "on_speaking", "on_network_message");
 	}
 	/**

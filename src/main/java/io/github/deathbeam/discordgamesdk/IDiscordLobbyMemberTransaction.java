@@ -26,7 +26,7 @@ public class IDiscordLobbyMemberTransaction extends Structure {
 	public IDiscordLobbyMemberTransaction() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("set_metadata", "delete_metadata");
 	}
 	/**

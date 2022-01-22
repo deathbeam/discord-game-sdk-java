@@ -16,7 +16,7 @@ public class DiscordSkuPrice extends Structure {
 	public DiscordSkuPrice() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("amount", "currency");
 	}
 	/** @param currency C type : char[16] */

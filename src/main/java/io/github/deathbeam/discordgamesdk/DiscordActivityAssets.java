@@ -21,7 +21,7 @@ public class DiscordActivityAssets extends Structure {
 	public DiscordActivityAssets() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("large_image", "large_text", "small_image", "small_text");
 	}
 	/**

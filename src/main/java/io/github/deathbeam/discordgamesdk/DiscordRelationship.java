@@ -22,7 +22,7 @@ public class DiscordRelationship extends Structure {
 	public DiscordRelationship() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("type", "user", "presence");
 	}
 	/**

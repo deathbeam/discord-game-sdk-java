@@ -17,7 +17,7 @@ public class DiscordFileStat extends Structure {
 	public DiscordFileStat() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("filename", "size", "last_modified");
 	}
 	/** @param filename C type : char[260] */

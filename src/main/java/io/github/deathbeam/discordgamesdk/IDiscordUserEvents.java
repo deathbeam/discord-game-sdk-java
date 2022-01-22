@@ -20,7 +20,7 @@ public class IDiscordUserEvents extends Structure {
 	public IDiscordUserEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_current_user_update");
 	}
 	/** @param on_current_user_update C type : on_current_user_update_callback* */

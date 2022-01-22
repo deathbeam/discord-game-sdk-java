@@ -26,7 +26,7 @@ public class IDiscordRelationshipEvents extends Structure {
 	public IDiscordRelationshipEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_refresh", "on_relationship_update");
 	}
 	/**

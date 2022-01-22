@@ -17,7 +17,7 @@ public class DiscordActivityTimestamps extends Structure {
 	public DiscordActivityTimestamps() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("start", "end");
 	}
 	/**

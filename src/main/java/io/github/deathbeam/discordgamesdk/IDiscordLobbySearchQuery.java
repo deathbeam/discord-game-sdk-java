@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class IDiscordLobbySearchQuery extends Structure {
 	/** C type : filter_callback* */
-	public io.github.deathbeam.discordgamesdk.IDiscordRelationshipManager.filter_callback filter;
+	public IDiscordRelationshipManager.filter_callback filter;
 	/** C type : sort_callback* */
 	public IDiscordLobbySearchQuery.sort_callback sort;
 	/** C type : limit_callback* */
@@ -38,7 +38,7 @@ public class IDiscordLobbySearchQuery extends Structure {
 	public IDiscordLobbySearchQuery() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("filter", "sort", "limit", "distance");
 	}
 	/**
@@ -47,7 +47,7 @@ public class IDiscordLobbySearchQuery extends Structure {
 	 * @param limit C type : limit_callback*<br>
 	 * @param distance C type : distance_callback*
 	 */
-	public IDiscordLobbySearchQuery(io.github.deathbeam.discordgamesdk.IDiscordRelationshipManager.filter_callback filter, IDiscordLobbySearchQuery.sort_callback sort, IDiscordLobbySearchQuery.limit_callback limit, IDiscordLobbySearchQuery.distance_callback distance) {
+	public IDiscordLobbySearchQuery(IDiscordRelationshipManager.filter_callback filter, IDiscordLobbySearchQuery.sort_callback sort, IDiscordLobbySearchQuery.limit_callback limit, IDiscordLobbySearchQuery.distance_callback distance) {
 		super();
 		this.filter = filter;
 		this.sort = sort;

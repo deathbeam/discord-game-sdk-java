@@ -17,7 +17,7 @@ public class DiscordActivityParty extends Structure {
 	public DiscordActivityParty() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("id", "size");
 	}
 	/**

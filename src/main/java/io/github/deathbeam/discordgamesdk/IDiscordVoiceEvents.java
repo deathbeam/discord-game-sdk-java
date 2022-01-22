@@ -20,7 +20,7 @@ public class IDiscordVoiceEvents extends Structure {
 	public IDiscordVoiceEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_settings_update");
 	}
 	/** @param on_settings_update C type : on_settings_update_callback* */

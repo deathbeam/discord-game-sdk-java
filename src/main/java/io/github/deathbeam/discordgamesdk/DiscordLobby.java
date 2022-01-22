@@ -26,7 +26,7 @@ public class DiscordLobby extends Structure {
 	public DiscordLobby() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("id", "type", "owner_id", "secret", "capacity", "locked");
 	}
 	/**

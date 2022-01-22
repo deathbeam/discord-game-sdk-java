@@ -66,7 +66,7 @@ public class IDiscordOverlayManager extends Structure {
 	public IDiscordOverlayManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("is_enabled", "is_locked", "set_locked", "open_activity_invite", "open_guild_invite", "open_voice_settings");
 	}
 	/**

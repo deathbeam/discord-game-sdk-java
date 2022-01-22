@@ -26,7 +26,7 @@ public class IDiscordNetworkEvents extends Structure {
 	public IDiscordNetworkEvents() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("on_message", "on_route_update");
 	}
 	/**

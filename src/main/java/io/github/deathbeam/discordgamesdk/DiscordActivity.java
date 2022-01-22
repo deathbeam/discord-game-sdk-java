@@ -34,7 +34,7 @@ public class DiscordActivity extends Structure {
 	public DiscordActivity() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("type", "application_id", "name", "state", "details", "timestamps", "assets", "party", "secrets", "instance");
 	}
 	public DiscordActivity(Pointer peer) {

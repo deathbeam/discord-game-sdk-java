@@ -76,7 +76,7 @@ public class IDiscordActivityManager extends Structure {
 	public IDiscordActivityManager() {
 		super();
 	}
-	protected List<String> getFieldOrder() {
+	protected List<String > getFieldOrder() {
 		return Arrays.asList("register_command", "register_steam", "update_activity", "clear_activity", "send_request_reply", "send_invite", "accept_invite");
 	}
 	/**
