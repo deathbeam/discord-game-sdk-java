@@ -5,9 +5,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.deathbeam</groupId>
-	<artifactId>discord-game-sdk-java</artifactId>
+	<artifactId>discord-game-sdk-parent</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>discord-game-sdk-java</name>
+	<name>discord-game-sdk-parent</name>
+	<packaging>pom</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,37 +16,35 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>net.java.dev.jna</groupId>
-			<artifactId>jna</artifactId>
-			<version>5.9.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.25</version>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.20</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+	<modules>
+		<module>discord-game-sdk-jna</module>
+		<module>discord-game-sdk</module>
+		<module>discord-game-sdk-examples</module>
+	</modules>
 
-	<build>
-		<plugins>
-			<plugin>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>net.java.dev.jna</groupId>
+				<artifactId>jna</artifactId>
+				<version>5.9.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.25</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>1.7.25</version>
+			</dependency>
+			<dependency>
 				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok-maven-plugin</artifactId>
-				<version>1.18.20.0</version>
-			</plugin>
-		</plugins>
-	</build>
+				<artifactId>lombok</artifactId>
+				<version>1.18.20</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
