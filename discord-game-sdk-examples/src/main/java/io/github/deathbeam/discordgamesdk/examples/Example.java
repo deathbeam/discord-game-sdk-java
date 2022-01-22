@@ -19,7 +19,7 @@ public class Example
 {
 	public static void main(String[] args)
 	{
-		long CLIENT_ID = Long.parseLong(args[0]);
+		final long CLIENT_ID = Long.parseLong(args[0]);
 
 		final ExecutorService executorService = Executors.newCachedThreadPool();
 		final IDiscordCore core = Discord.create(CLIENT_ID, new DiscordEvents(), executorService);
