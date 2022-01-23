@@ -13,7 +13,9 @@ import io.github.deathbeam.discordgamesdk.jna.IDiscordStorageManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordStoreManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordUserManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordVoiceManager;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class DiscordCoreExtensions
 {
 	public static IDiscordApplicationManager getApplicationManager(final IDiscordCore core)

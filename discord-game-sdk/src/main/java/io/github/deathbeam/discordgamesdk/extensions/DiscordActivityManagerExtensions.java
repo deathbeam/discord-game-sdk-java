@@ -3,7 +3,9 @@ package io.github.deathbeam.discordgamesdk.extensions;
 import io.github.deathbeam.discordgamesdk.jna.DiscordActivity;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordActivityManager;
 import java.util.concurrent.CompletableFuture;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class DiscordActivityManagerExtensions
 {
 	public static CompletableFuture<Integer> updateActivity(final IDiscordActivityManager activityManager, final DiscordActivity activity)

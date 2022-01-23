@@ -6,7 +6,7 @@ import io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK;
 import static io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK.*;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordActivityManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordCore;
-import static io.github.deathbeam.discordgamesdk.utils.DiscordUtils.fillStr;
+import static io.github.deathbeam.discordgamesdk.utils.DiscordUtils.strToByteArr;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -38,8 +38,8 @@ public class ExampleJNA
 
 		final IDiscordActivityManager activityManager = core.get_activity_manager.apply(core);
 		final DiscordActivity activity = new DiscordActivity();
-		fillStr(activity.state, "In Play Mode");
-		fillStr(activity.details, "Playing the trumpet");
+		strToByteArr(activity.state, "In Play Mode");
+		strToByteArr(activity.details, "Playing the trumpet");
 
 		activityManager.update_activity.apply(activityManager, activity, null, (callback_data, result1) -> log.debug("update activity callback result is {}", result1));
 
