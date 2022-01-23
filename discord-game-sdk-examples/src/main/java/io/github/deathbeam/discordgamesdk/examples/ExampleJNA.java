@@ -14,10 +14,10 @@ public class ExampleJNA
 {
 	public static void main(String[] args) throws InterruptedException
 	{
-		final long CLIENT_ID = Long.parseLong(args[0]);
+		final long APPLICATION_ID = Long.parseLong(args[0]);
 
 		final DiscordCreateParams params = new DiscordCreateParams();
-		params.client_id = CLIENT_ID;
+		params.client_id = APPLICATION_ID;
 		params.application_version = DISCORD_APPLICATION_MANAGER_VERSION;
 		params.user_version = DISCORD_USER_MANAGER_VERSION;
 		params.image_version = DISCORD_IMAGE_MANAGER_VERSION;

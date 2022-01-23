@@ -19,10 +19,11 @@ public class Example
 {
 	public static void main(String[] args)
 	{
-		final long CLIENT_ID = Long.parseLong(args[0]);
+		final long APPLICATION_ID = Long.parseLong(args[0]);
 
 		final ExecutorService executorService = Executors.newCachedThreadPool();
-		final IDiscordCore core = Discord.create(CLIENT_ID, new DiscordEvents(), executorService);
+		final Discord discord = new Discord(APPLICATION_ID, new DiscordEvents(), executorService);
+		final IDiscordCore core = discord.init();
 
 		final IDiscordActivityManager activityManager = core.getActivityManager();
 		final DiscordActivity activity = new DiscordActivity();
