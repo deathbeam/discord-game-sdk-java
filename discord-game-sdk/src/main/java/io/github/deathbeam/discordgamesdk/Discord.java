@@ -23,6 +23,7 @@ public class Discord
 	// Prevent garbage collection
 	private final DiscordCreateParams params;
 	private final ExecutorService executorService;
+	private final DiscordEvents events;
 	private IDiscordCore core;
 
 	public Discord(final long applicationId, final DiscordEvents events, final ExecutorService executorService)
@@ -91,6 +92,7 @@ public class Discord
 		voiceEvents.on_settings_update = event_data -> events.onVoiceSettingsUpdate();
 		params.voice_events = voiceEvents;
 
+		this.events = events;
 		this.params = params;
 		this.executorService = executorService;
 	}
@@ -125,6 +127,8 @@ public class Discord
 		final IDiscordCore core = ptr[0];
 		log.debug("Created Discord core instance {}", core.getPointer());
 
+		events.core = core;
+
 		core.set_log_hook.apply(core, EDiscordLogLevel.DiscordLogLevel_Debug, null, (hook_data, level, message) -> {
 			final String messageStr = message.getString(0);
 			switch (level)
@@ -143,6 +147,20 @@ public class Discord
 					break;
 			}
 		});
+
+		// Initialize managers
+		core.get_activity_manager.apply(core);
+		core.get_achievement_manager.apply(core);
+		core.get_application_manager.apply(core);
+		core.get_image_manager.apply(core);
+		core.get_lobby_manager.apply(core);
+		core.get_network_manager.apply(core);
+		core.get_overlay_manager.apply(core);
+		core.get_storage_manager.apply(core);
+		core.get_store_manager.apply(core);
+		core.get_user_manager.apply(core);
+		core.get_voice_manager.apply(core);
+		core.get_relationship_manager.apply(core);
 
 		executorService.submit(() -> {
 			while (true)

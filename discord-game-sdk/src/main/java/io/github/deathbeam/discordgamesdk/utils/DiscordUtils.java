@@ -17,7 +17,8 @@ public class DiscordUtils
 	public static String byteArrToStr(byte[] src)
 	{
 		final String str = new String(src, StandardCharsets.UTF_8);
-		return str.split("\\u0000")[0];
+		final String[] split = str.split("\\u0000");
+		return split.length > 0 ? split[0] : str;
 	}
 
 	public static boolean toBoolean(byte val)

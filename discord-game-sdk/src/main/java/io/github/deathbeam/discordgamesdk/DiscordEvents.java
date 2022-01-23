@@ -5,16 +5,24 @@ import io.github.deathbeam.discordgamesdk.jna.DiscordEntitlement;
 import io.github.deathbeam.discordgamesdk.jna.DiscordRelationship;
 import io.github.deathbeam.discordgamesdk.jna.DiscordUser;
 import io.github.deathbeam.discordgamesdk.jna.DiscordUserAchievement;
+import io.github.deathbeam.discordgamesdk.jna.IDiscordCore;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DiscordEvents
 {
+	IDiscordCore core;
+
+	protected IDiscordCore getCore()
+	{
+		return core;
+	}
+
 	// Achievement events
 
 	public void onUserAchievementUpdate(final DiscordUserAchievement achievement)
 	{
-		log.debug("Received onUserAchievementUpdate {}", achievement.achievement_id);
+		log.debug("Received onUserAchievementUpdate {}", achievement);
 	}
 
 	// Activity events
@@ -31,12 +39,12 @@ public class DiscordEvents
 
 	public void onActivityJoinRequest(final DiscordUser user)
 	{
-		log.debug("Received onActivityJoinRequest {}", user.id);
+		log.debug("Received onActivityJoinRequest {}", user);
 	}
 
 	public void onActivityInvite(final int type, final DiscordUser user, final DiscordActivity activity)
 	{
-		log.debug("Received onActivityInvite {} {}", type, user.id);
+		log.debug("Received onActivityInvite {} {} {}", type, user, activity);
 	}
 
 	// Lobby events
@@ -116,12 +124,12 @@ public class DiscordEvents
 
 	public void onStoreEntitlementCreate(final DiscordEntitlement entitlement)
 	{
-		log.debug("Received onStoreEntitlementCreate {}", entitlement.id);
+		log.debug("Received onStoreEntitlementCreate {}", entitlement);
 	}
 
 	public void onStoreEntitlementDelete(final DiscordEntitlement entitlement)
 	{
-		log.debug("Received onStoreEntitlementDelete {}", entitlement.id);
+		log.debug("Received onStoreEntitlementDelete {}", entitlement);
 	}
 
 	// User events

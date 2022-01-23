@@ -9,6 +9,7 @@ import io.github.deathbeam.discordgamesdk.jna.IDiscordImageManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordLobbyManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordNetworkManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordOverlayManager;
+import io.github.deathbeam.discordgamesdk.jna.IDiscordRelationshipManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordStorageManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordStoreManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordUserManager;
@@ -36,6 +37,11 @@ public class DiscordCoreExtensions
 	public static IDiscordActivityManager getActivityManager(final IDiscordCore core)
 	{
 		return core.get_activity_manager.apply(core);
+	}
+
+	public static IDiscordRelationshipManager getRelationshipManager(final IDiscordCore core)
+	{
+		return core.get_relationship_manager.apply(core);
 	}
 
 	public static IDiscordLobbyManager getLobbyManager(final IDiscordCore core)
