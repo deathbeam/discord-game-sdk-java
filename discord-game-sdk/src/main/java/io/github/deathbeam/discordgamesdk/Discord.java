@@ -38,6 +38,15 @@ public class Discord
 	{
 		final DiscordCreateParams params = new DiscordCreateParams();
 		params.client_id = applicationId;
+		setupDefaultVersions(params);
+		setupEventHandlers(params);
+
+		this.params = params;
+		this.executorService = executorService;
+	}
+
+	private void setupDefaultVersions(final DiscordCreateParams params)
+	{
 		params.application_version = DISCORD_APPLICATION_MANAGER_VERSION;
 		params.user_version = DISCORD_USER_MANAGER_VERSION;
 		params.image_version = DISCORD_IMAGE_MANAGER_VERSION;
@@ -50,10 +59,6 @@ public class Discord
 		params.store_version = DISCORD_STORE_MANAGER_VERSION;
 		params.voice_version = DISCORD_VOICE_MANAGER_VERSION;
 		params.achievement_version = DISCORD_ACHIEVEMENT_MANAGER_VERSION;
-		setupEventHandlers(params);
-
-		this.params = params;
-		this.executorService = executorService;
 	}
 
 	private void setupEventHandlers(final DiscordCreateParams params)
@@ -108,11 +113,11 @@ public class Discord
 		params.voice_events = voiceEvents;
 	}
 
-	public IDiscordCore init()
+	public IDiscordCore init() throws DiscordInitException
 	{
 		if (core != null)
 		{
-			throw new RuntimeException("init() was already called");
+			throw new DiscordInitException("Discord.init() was already called");
 		}
 
 		final DiscordGameSDK discordGameSDK;
@@ -123,8 +128,7 @@ public class Discord
 		}
 		catch (Error e)
 		{
-			log.warn("Failed to load Discord library, Discord support will be disabled.");
-			return null;
+			throw new DiscordInitException("Failed to get native Discord library instance");
 		}
 
 		final IDiscordCore.ByReference[] ptr = (IDiscordCore.ByReference[]) new IDiscordCore.ByReference().toArray(1);
@@ -132,7 +136,7 @@ public class Discord
 
 		if (result != EDiscordResult.DiscordResult_Ok)
 		{
-			throw new RuntimeException(String.format("Discord result is not OK(0): %s", result));
+			throw new DiscordInitException(String.format("Discord create result is not OK(0): %s", result));
 		}
 
 		final IDiscordCore core = ptr[0];

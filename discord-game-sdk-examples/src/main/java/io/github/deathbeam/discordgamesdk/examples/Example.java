@@ -2,6 +2,7 @@ package io.github.deathbeam.discordgamesdk.examples;
 
 import io.github.deathbeam.discordgamesdk.Discord;
 import io.github.deathbeam.discordgamesdk.DiscordEvents;
+import io.github.deathbeam.discordgamesdk.DiscordInitException;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordActivityExtensions;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordActivityManagerExtensions;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordCoreExtensions;
@@ -27,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 })
 public class Example
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws DiscordInitException
 	{
 		final long APPLICATION_ID = Long.parseLong(args[0]);
 
