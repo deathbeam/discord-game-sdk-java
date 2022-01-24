@@ -14,127 +14,127 @@ public class DiscordEvents
 
 	public void onUserAchievementUpdate(final DiscordUserAchievement achievement)
 	{
-		log.debug("Received onUserAchievementUpdate {}", achievement);
+		log.trace("Received onUserAchievementUpdate {}", achievement);
 	}
 
 	// Activity events
 
 	public void onActivityJoin(final String secret)
 	{
-		log.debug("Received onActivityJoin {}", secret);
+		log.trace("Received onActivityJoin {}", secret);
 	}
 
 	public void onActivitySpectate(final String secret)
 	{
-		log.debug("Received onActivitySpectate {}", secret);
+		log.trace("Received onActivitySpectate {}", secret);
 	}
 
 	public void onActivityJoinRequest(final DiscordUser user)
 	{
-		log.debug("Received onActivityJoinRequest {}", user);
+		log.trace("Received onActivityJoinRequest {}", user);
 	}
 
 	public void onActivityInvite(final int type, final DiscordUser user, final DiscordActivity activity)
 	{
-		log.debug("Received onActivityInvite {} {} {}", type, user, activity);
+		log.trace("Received onActivityInvite {} {} {}", type, user, activity);
 	}
 
 	// Lobby events
 
 	public void onLobbyUpdate(final long lobbyId)
 	{
-		log.debug("Received onLobbyUpdate {}", lobbyId);
+		log.trace("Received onLobbyUpdate {}", lobbyId);
 	}
 
 	public void onLobbyDelete(final long lobbyId, final int reason)
 	{
-		log.debug("Received onLobbyDelete {} {}", lobbyId, reason);
+		log.trace("Received onLobbyDelete {} {}", lobbyId, reason);
 	}
 
 	public void onLobbyMemberConnect(final long lobbyId, final long userId)
 	{
-		log.debug("Received onLobbyMemberConnect {} {}", lobbyId, userId);
+		log.trace("Received onLobbyMemberConnect {} {}", lobbyId, userId);
 	}
 
 	public void onLobbyMemberUpdate(final long lobbyId, final long userId)
 	{
-		log.debug("Received onLobbyMemberUpdate {} {}", lobbyId, userId);
+		log.trace("Received onLobbyMemberUpdate {} {}", lobbyId, userId);
 	}
 
 	public void onLobbyMemberDisconnect(final long lobbyId, final long userId)
 	{
-		log.debug("Received onLobbyMemberDisconnect {} {}", lobbyId, userId);
+		log.trace("Received onLobbyMemberDisconnect {} {}", lobbyId, userId);
 	}
 
 	public void onLobbyMessage(final long lobbyId, final long userId, final String message)
 	{
-		log.debug("Received onLobbyMessage {} {} {}", lobbyId, userId, message);
+		log.trace("Received onLobbyMessage {} {} {}", lobbyId, userId, message);
 	}
 
 	public void onLobbySpeaking(final long lobbyId, final long userId, final boolean speaking)
 	{
-		log.debug("Received onLobbySpeaking {} {} {}", lobbyId, userId, speaking);
+		log.trace("Received onLobbySpeaking {} {} {}", lobbyId, userId, speaking);
 	}
 
 	public void onLobbyNetworkMessage(final long lobbyId, final long userId, final byte channelId, final String message)
 	{
-		log.debug("Received onLobbyNetworkMessage {} {} {} {}", lobbyId, userId, channelId, message);
+		log.trace("Received onLobbyNetworkMessage {} {} {} {}", lobbyId, userId, channelId, message);
 	}
 
 	// Network events
 
 	public void onNetworkMessage(final long peerId, final byte channelId, final String message)
 	{
-		log.debug("Received onNetworkMessage {} {} {}", peerId, channelId, message);
+		log.trace("Received onNetworkMessage {} {} {}", peerId, channelId, message);
 	}
 
 	public void onNetworkRouteUpdate(final String routeData)
 	{
-		log.debug("Received onNetworkRouteUpdate {}", routeData);
+		log.trace("Received onNetworkRouteUpdate {}", routeData);
 	}
 
 	// Overlay events
 
 	public void onOverlayToggle(final boolean locked)
 	{
-		log.debug("Received onOverlayToggle {}", locked);
+		log.trace("Received onOverlayToggle {}", locked);
 	}
 
 	// Relationship events
 
 	public void onRelationshipRefresh()
 	{
-		log.debug("Received onRelationshipRefresh");
+		log.trace("Received onRelationshipRefresh");
 	}
 
 	public void onRelationshipUpdate(final DiscordRelationship relationship)
 	{
-		log.debug("Received onRelationshipUpdate {}", relationship);
+		log.trace("Received onRelationshipUpdate {}", relationship);
 	}
 
 	// Store events
 
 	public void onStoreEntitlementCreate(final DiscordEntitlement entitlement)
 	{
-		log.debug("Received onStoreEntitlementCreate {}", entitlement);
+		log.trace("Received onStoreEntitlementCreate {}", entitlement);
 	}
 
 	public void onStoreEntitlementDelete(final DiscordEntitlement entitlement)
 	{
-		log.debug("Received onStoreEntitlementDelete {}", entitlement);
+		log.trace("Received onStoreEntitlementDelete {}", entitlement);
 	}
 
 	// User events
 
 	public void onCurrentUserUpdate(final DiscordUser user)
 	{
-		log.debug("Received onCurrentUserUpdate {}", user);
+		log.trace("Received onCurrentUserUpdate {}", user);
 	}
 
 	// Voice events
 
 	public void onVoiceSettingsUpdate()
 	{
-		log.debug("Received onVoiceSettingsUpdate");
+		log.trace("Received onVoiceSettingsUpdate");
 	}
 }
