@@ -21,4 +21,11 @@ public class DiscordActivityManagerExtensions
 		activityManager.clear_activity.apply(activityManager, null, (callback_data, result) -> future.complete(result));
 		return future;
 	}
+
+	public static CompletableFuture<Integer> sendRequestReply(final IDiscordActivityManager activityManager, final long userId, final int reply)
+	{
+		final CompletableFuture<Integer> future = new CompletableFuture<>();
+		activityManager.send_request_reply.apply(activityManager, userId, reply, null, (callback_data, result) -> future.complete(result));
+		return future;
+	}
 }
