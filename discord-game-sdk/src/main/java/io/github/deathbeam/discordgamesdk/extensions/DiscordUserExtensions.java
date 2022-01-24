@@ -7,6 +7,11 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class DiscordUserExtensions
 {
+	public static long getId(final DiscordUser discordUser)
+	{
+		return discordUser.id;
+	}
+
 	public static String getUsername(final DiscordUser discordUser)
 	{
 		return byteArrToStr(discordUser.username);
