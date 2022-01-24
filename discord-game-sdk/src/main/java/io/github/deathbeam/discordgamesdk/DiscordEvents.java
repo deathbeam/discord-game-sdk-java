@@ -5,19 +5,11 @@ import io.github.deathbeam.discordgamesdk.jna.DiscordEntitlement;
 import io.github.deathbeam.discordgamesdk.jna.DiscordRelationship;
 import io.github.deathbeam.discordgamesdk.jna.DiscordUser;
 import io.github.deathbeam.discordgamesdk.jna.DiscordUserAchievement;
-import io.github.deathbeam.discordgamesdk.jna.IDiscordCore;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DiscordEvents
 {
-	IDiscordCore core;
-
-	protected IDiscordCore getCore()
-	{
-		return core;
-	}
-
 	// Achievement events
 
 	public void onUserAchievementUpdate(final DiscordUserAchievement achievement)
@@ -134,9 +126,9 @@ public class DiscordEvents
 
 	// User events
 
-	public void onCurrentUserUpdate()
+	public void onCurrentUserUpdate(final DiscordUser user)
 	{
-		log.debug("Received onCurrentUserUpdate");
+		log.debug("Received onCurrentUserUpdate {}", user);
 	}
 
 	// Voice events

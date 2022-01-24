@@ -21,8 +21,13 @@ public class DiscordUtils
 		return split.length > 0 ? split[0] : str;
 	}
 
-	public static boolean toBoolean(byte val)
+	public static boolean byteToBool(byte val)
 	{
-		return val == 1;
+		return val != 0;
+	}
+
+	public static byte boolToByte(boolean val)
+	{
+		return val ? (byte) 1 : (byte) 0;
 	}
 }
