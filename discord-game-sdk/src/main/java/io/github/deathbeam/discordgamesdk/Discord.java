@@ -14,7 +14,8 @@ import io.github.deathbeam.discordgamesdk.jna.IDiscordStoreEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordUserEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordVoiceEvents;
 import static io.github.deathbeam.discordgamesdk.utils.DiscordUtils.toBoolean;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -22,11 +23,11 @@ public class Discord
 {
 	// Prevent garbage collection
 	private final DiscordCreateParams params;
-	private final ExecutorService executorService;
+	private final ScheduledExecutorService executorService;
 	private final DiscordEvents events;
 	private IDiscordCore core;
 
-	public Discord(final long applicationId, final DiscordEvents events, final ExecutorService executorService)
+	public Discord(final long applicationId, final DiscordEvents events, final ScheduledExecutorService executorService)
 	{
 		final DiscordCreateParams params = new DiscordCreateParams();
 		params.client_id = applicationId;
@@ -129,6 +130,7 @@ public class Discord
 
 		events.core = core;
 
+		// Setup logging
 		core.set_log_hook.apply(core, EDiscordLogLevel.DiscordLogLevel_Debug, null, (hook_data, level, message) -> {
 			final String messageStr = message.getString(0);
 			switch (level)
@@ -162,14 +164,9 @@ public class Discord
 		core.get_voice_manager.apply(core);
 		core.get_relationship_manager.apply(core);
 
-		executorService.submit(() -> {
-			while (true)
-			{
-				Thread.sleep(200);
-				core.run_callbacks.apply(core);
-			}
-		});
+		executorService.scheduleAtFixedRate(() -> core.run_callbacks.apply(core), 200, 200, TimeUnit.MILLISECONDS);
 
+		// Add shutdown hook to properly destroy the service
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 			log.debug("Closing Discord core instance {}", core.getPointer());
 			core.destroy.apply(core);

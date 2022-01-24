@@ -12,6 +12,7 @@ import io.github.deathbeam.discordgamesdk.jna.IDiscordActivityManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordCore;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,7 +40,7 @@ public class Example
 	{
 		final long APPLICATION_ID = Long.parseLong(args[0]);
 
-		final ExecutorService executorService = Executors.newCachedThreadPool();
+		final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 		final Discord discord = new Discord(APPLICATION_ID, new ExampleDiscordEvents(), executorService);
 		final IDiscordCore core = discord.init();
 
