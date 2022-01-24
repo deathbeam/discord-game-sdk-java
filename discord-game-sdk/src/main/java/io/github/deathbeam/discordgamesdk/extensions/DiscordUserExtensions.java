@@ -22,6 +22,11 @@ public class DiscordUserExtensions
 		return byteArrToStr(discordUser.discriminator);
 	}
 
+	public static String getAvatar(final DiscordUser discordUser)
+	{
+		return byteArrToStr(discordUser.avatar);
+	}
+
 	public static String getDisplayName(final DiscordUser discordUser)
 	{
 		return getUsername(discordUser) + "#" + getDiscriminator(discordUser);
