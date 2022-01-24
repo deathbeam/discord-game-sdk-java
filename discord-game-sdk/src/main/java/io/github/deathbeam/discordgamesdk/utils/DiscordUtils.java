@@ -10,6 +10,11 @@ public class DiscordUtils
 	public static void strToByteArr(byte[] dst, String val)
 	{
 		Arrays.fill(dst, (byte) 0);
+		if (val == null)
+		{
+			return;
+		}
+
 		final byte[] valArr = val.getBytes(StandardCharsets.UTF_8);
 		System.arraycopy(valArr, 0, dst, 0, valArr.length);
 	}
