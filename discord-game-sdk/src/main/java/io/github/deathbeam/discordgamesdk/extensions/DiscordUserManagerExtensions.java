@@ -1,5 +1,6 @@
 package io.github.deathbeam.discordgamesdk.extensions;
 
+import io.github.deathbeam.discordgamesdk.DiscordResult;
 import io.github.deathbeam.discordgamesdk.jna.DiscordUser;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordUserManager;
 import java.util.concurrent.CompletableFuture;
@@ -18,7 +19,7 @@ public class DiscordUserManagerExtensions
 	public static CompletableFuture<DiscordUser> getUser(final IDiscordUserManager userManager, final long userId)
 	{
 		final CompletableFuture<DiscordUser> future = new CompletableFuture<>();
-		userManager.get_user.apply(userManager, userId, null, (callback_data, result, user) -> future.complete(user));
+		userManager.get_user.apply(userManager, userId, null, (callback_data, result, user) -> DiscordResult.of(result).completeFuture(future, user));
 		return future;
 	}
 }

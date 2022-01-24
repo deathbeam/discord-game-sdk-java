@@ -2,7 +2,7 @@ package io.github.deathbeam.discordgamesdk.examples;
 
 import io.github.deathbeam.discordgamesdk.Discord;
 import io.github.deathbeam.discordgamesdk.DiscordEvents;
-import io.github.deathbeam.discordgamesdk.DiscordInitException;
+import io.github.deathbeam.discordgamesdk.DiscordException;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordActivityExtensions;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordActivityManagerExtensions;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordCoreExtensions;
@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 })
 public class Example
 {
-	public static void main(String[] args) throws DiscordInitException
+	public static void main(String[] args) throws DiscordException
 	{
 		final long APPLICATION_ID = Long.parseLong(args[0]);
 
@@ -52,7 +52,17 @@ public class Example
 		activity.setState("In Play Mode");
 		activity.setDetails("Playing the trumpet");
 		activity.setStartTimestamp(Instant.now());
-		activityManager.updateActivity(activity).thenAccept(result -> log.debug("update activity callback result is {}", result));
+		activityManager.updateActivity(activity)
+			.whenComplete((result, e) -> {
+				if (e != null)
+				{
+					log.warn("Activity failed to update", e);
+				}
+				else
+				{
+					log.info("Activity updated successfully");
+				}
+			});
 
 		while (!executorService.isShutdown())
 		{

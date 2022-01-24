@@ -41,7 +41,7 @@ public class ExampleJNA
 		strToByteArr(activity.state, "In Play Mode");
 		strToByteArr(activity.details, "Playing the trumpet");
 
-		activityManager.update_activity.apply(activityManager, activity, null, (callback_data, result1) -> log.debug("update activity callback result is {}", result1));
+		activityManager.update_activity.apply(activityManager, activity, null, (callback_data, result1) -> log.debug("Update activity callback result is {}", result1));
 
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 			log.debug("Shutting down Discord core {}", core.getPointer());

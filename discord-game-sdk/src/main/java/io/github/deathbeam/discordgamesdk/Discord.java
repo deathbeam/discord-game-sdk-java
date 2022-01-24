@@ -113,11 +113,11 @@ public class Discord
 		params.voice_events = voiceEvents;
 	}
 
-	public IDiscordCore init() throws DiscordInitException
+	public IDiscordCore init() throws DiscordException
 	{
 		if (core != null)
 		{
-			throw new DiscordInitException("Discord.init() was already called");
+			throw new DiscordException("Discord.init() was already called");
 		}
 
 		final DiscordGameSDK discordGameSDK;
@@ -128,15 +128,15 @@ public class Discord
 		}
 		catch (Error e)
 		{
-			throw new DiscordInitException("Failed to get native Discord library instance");
+			throw new DiscordException("Failed to get native Discord library instance");
 		}
 
 		final IDiscordCore.ByReference[] ptr = (IDiscordCore.ByReference[]) new IDiscordCore.ByReference().toArray(1);
-		final int result = discordGameSDK.DiscordCreate(DISCORD_VERSION, params, ptr);
+		final DiscordResult result = DiscordResult.of(discordGameSDK.DiscordCreate(DISCORD_VERSION, params, ptr));
 
-		if (result != EDiscordResult.DiscordResult_Ok)
+		if (!result.isOk())
 		{
-			throw new DiscordInitException(String.format("Discord create result is not OK(0): %s", result));
+			throw new DiscordException("Discord core service creation failed", result);
 		}
 
 		final IDiscordCore core = ptr[0];
