@@ -2,8 +2,8 @@ package io.github.deathbeam.discordgamesdk.examples;
 
 import io.github.deathbeam.discordgamesdk.jna.DiscordActivity;
 import io.github.deathbeam.discordgamesdk.jna.DiscordCreateParams;
-import io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK;
-import static io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK.*;
+import io.github.deathbeam.discordgamesdk.jna.Discord_game_sdkLibrary;
+import static io.github.deathbeam.discordgamesdk.jna.Discord_game_sdkLibrary.*;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordActivityManager;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordCore;
 import static io.github.deathbeam.discordgamesdk.utils.DiscordUtils.strToByteArr;
@@ -32,7 +32,7 @@ public class ExampleJNA
 		params.achievement_version = DISCORD_ACHIEVEMENT_MANAGER_VERSION;
 
 		final IDiscordCore.ByReference[] ptr = (IDiscordCore.ByReference[]) new IDiscordCore.ByReference().toArray(1);
-		final int result = DiscordGameSDK.INSTANCE.DiscordCreate(DISCORD_VERSION, params, ptr);
+		final int result = Discord_game_sdkLibrary.INSTANCE.DiscordCreate(DISCORD_VERSION, params, ptr);
 		final IDiscordCore core = ptr[0];
 		log.debug("Discord create output is {} and pointer {}", result, core.getPointer());
 

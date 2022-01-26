@@ -10,17 +10,5 @@ Java JNA wrapper for Discord Game SDK
 
 Download discord game SDK from here: https://discord.com/developers/docs/game-sdk/sdk-starter-guide
 
-Build JNAErator from here: https://github.com/deathbeam/JNAerator
-
-Use
-
-```
-java -jar <path_to_jnaerator_shaded.jar> \
-  -library discord_game_sdk \
-  -package io.github.deathbeam.discordgamesdk.jna \
-  -mode Directory \
-  -runtime JNA \
-  -limitComments \
-  -f \
-  <path_to_discord_game_sdk.h>
-```
+Update `discord_game_sdk.h` in [](discord-game-sdk-jna/src/main/jnaerator)
+Update libraries in [](discord-game-sdk-jna/src/main/resources)

@@ -3,8 +3,8 @@ package io.github.deathbeam.discordgamesdk;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordCoreExtensions;
 import io.github.deathbeam.discordgamesdk.extensions.DiscordUserManagerExtensions;
 import io.github.deathbeam.discordgamesdk.jna.DiscordCreateParams;
-import io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK;
-import static io.github.deathbeam.discordgamesdk.jna.DiscordGameSDK.*;
+import io.github.deathbeam.discordgamesdk.jna.Discord_game_sdkLibrary;
+import static io.github.deathbeam.discordgamesdk.jna.Discord_game_sdkLibrary.*;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordAchievementEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordActivityEvents;
 import io.github.deathbeam.discordgamesdk.jna.IDiscordCore;
@@ -120,7 +120,7 @@ public class Discord
 			throw new DiscordException("Discord.init() was already called");
 		}
 
-		final DiscordGameSDK discordGameSDK;
+		final Discord_game_sdkLibrary discordGameSDK;
 
 		try
 		{

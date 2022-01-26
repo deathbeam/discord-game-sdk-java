@@ -10,10 +10,10 @@ import io.github.deathbeam.discordgamesdk.jna.IDiscordCore.ByReference;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public interface DiscordGameSDK extends Library {
+public interface Discord_game_sdkLibrary extends Library {
 	public static final String JNA_LIBRARY_NAME = "discord_game_sdk";
-	public static final NativeLibrary JNA_NATIVE_LIB = NativeLibrary.getInstance(DiscordGameSDK.JNA_LIBRARY_NAME);
-	public static final DiscordGameSDK INSTANCE = (DiscordGameSDK)Native.loadLibrary(DiscordGameSDK.JNA_LIBRARY_NAME, DiscordGameSDK.class);
+	public static final NativeLibrary JNA_NATIVE_LIB = NativeLibrary.getInstance(Discord_game_sdkLibrary.JNA_LIBRARY_NAME);
+	public static final Discord_game_sdkLibrary INSTANCE = (Discord_game_sdkLibrary)Native.loadLibrary(Discord_game_sdkLibrary.JNA_LIBRARY_NAME, Discord_game_sdkLibrary.class);
 	/** enum values */
 	public static interface EDiscordResult {
 		public static final int DiscordResult_Ok = 0;
