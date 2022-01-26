@@ -13,3 +13,9 @@ Download discord game SDK from here: https://discord.com/developers/docs/game-sd
 Update `discord_game_sdk.h` in [discord-game-sdk-jna/src/main/jnaerator](discord-game-sdk-jna/src/main/jnaerator)
 
 Update libraries in [discord-game-sdk-jna/src/main/resources](discord-game-sdk-jna/src/main/resources)
+
+Run
+
+```
+mvn clean install -P generate-jna
+```
